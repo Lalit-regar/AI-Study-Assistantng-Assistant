@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>StudyMate - AI Study Assistant</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <h1>📚 StudyMate</h1>
+  <nav id="tabs">
+    <button data-t="notes">Notes</button>
+    <button data-t="cards">Flashcards</button>
+    <button data-t="quiz">Quiz</button>
+    <button data-t="focus">Focus timer</button>
+    <button data-t="tutor">AI tutor</button>
+  </nav>
+</header>
+
+<main>
+  <section id="notes" class="panel">
+    <div class="split">
+      <aside class="card">
+        <button class="btn" id="nnew">+ New note</button>
+        <ul id="nlist"></ul>
+      </aside>
+      <div class="card">
+        <input id="ntitle" placeholder="Note title">
+        <textarea id="ntext" rows="12" placeholder="Write or paste your notes here. Lines like  Term: meaning  can be turned into flashcards."></textarea>
+        <div class="row">
+          <button class="btn" id="nsave">Save</button>
+          <button class="btn sec" id="nsum">Summarize</button>
+          <button class="btn sec" id="ncards">Make flashcards</button>
+          <button class="btn sec" id="ndel">Delete</button>
+        </div>
+        <p id="nout" role="status"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="cards" class="panel" hidden>
+    <div id="fc" class="fc" tabindex="0" role="button" aria-label="Flip card"></div>
+    <p class="mut ctr"><span id="fcount"></span> · <span id="fstat"></span></p>
+    <div class="row ctr">
+      <button class="btn sec" id="fprev" aria-label="Previous">←</button>
+      <button class="btn sec" id="fbad">Again</button>
+      <button class="btn" id="fgood">Got it</button>
+      <button class="btn sec" id="fnext" aria-label="Next">→</button>
+      <button class="btn sec" id="fdel">Delete</button>
+    </div>
+    <form class="card" id="fform">
+      <input id="ff" placeholder="Front (question or term)" required>
+      <input id="fb" placeholder="Back (answer)" required>
+      <button class="btn">Add card</button>
+    </form>
+  </section>
+
+  <section id="quiz" class="panel" hidden>
+    <div class="card">
+      <div id="qbox"><p class="mut">Test yourself on up to 10 random flashcards.</p></div>
+      <div class="row"><button class="btn" id="qstart">Start quiz</button></div>
+    </div>
+  </section>
+
+  <section id="focus" class="panel" hidden>
+    <div class="card ctr">
+      <p id="tmode" class="mut"></p>
+      <div id="time">25:00</div>
+      <div class="row ctr">
+        <button class="btn" id="tstart">Start</button>
+        <button class="btn sec" id="treset">Reset</button>
+      </div>
+      <p id="tsess" class="mut"></p>
+    </div>
+  </section>
+
+  <section id="tutor" class="panel" hidden>
+    <div class="card">
+      <div id="chat" aria-live="polite"></div>
+      <form id="tform" class="row">
+        <input id="tin" placeholder="Ask anything, e.g. Explain photosynthesis simply" autocomplete="off">
+        <button class="btn">Send</button>
+      </form>
+      <label class="mut"><input type="checkbox" id="tctx"> Use my current note as context</label>
+    </div>
+  </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
